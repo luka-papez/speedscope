@@ -96,6 +96,137 @@ exports[`importFromSafari 1`] = `
 }
 `;
 
+exports[`importFromSafari 26.4 1`] = `
+{
+  "frames": [
+    Frame {
+      "col": 1,
+      "file": "file:///./speedscope/sample/programs/javascript/simple.js",
+      "key": "(program):file:///./speedscope/sample/programs/javascript/simple.js:1:1",
+      "line": 1,
+      "name": "(program)",
+      "selfWeight": 0,
+      "totalWeight": 0.012226333332364447,
+    },
+    Frame {
+      "col": 15,
+      "file": "file:///./speedscope/sample/programs/javascript/simple.js",
+      "key": "alpha:file:///./speedscope/sample/programs/javascript/simple.js:1:15",
+      "line": 1,
+      "name": "alpha",
+      "selfWeight": 0,
+      "totalWeight": 0.012226333332364447,
+    },
+    Frame {
+      "col": 14,
+      "file": "file:///./speedscope/sample/programs/javascript/simple.js",
+      "key": "beta:file:///./speedscope/sample/programs/javascript/simple.js:8:14",
+      "line": 8,
+      "name": "beta",
+      "selfWeight": 0,
+      "totalWeight": 0.006986476189922541,
+    },
+    Frame {
+      "col": 15,
+      "file": "file:///./speedscope/sample/programs/javascript/simple.js",
+      "key": "gamma:file:///./speedscope/sample/programs/javascript/simple.js:20:15",
+      "line": 20,
+      "name": "gamma",
+      "selfWeight": 0.012226333332364447,
+      "totalWeight": 0.012226333332364447,
+    },
+    Frame {
+      "col": 15,
+      "file": "file:///./speedscope/sample/programs/javascript/simple.js",
+      "key": "delta:file:///./speedscope/sample/programs/javascript/simple.js:14:15",
+      "line": 14,
+      "name": "delta",
+      "selfWeight": 0,
+      "totalWeight": 0.005239857142441906,
+    },
+    Frame {
+      "col": 11,
+      "file": "",
+      "key": "createInspectorInjectedScript::1:11",
+      "line": 1,
+      "name": "createInspectorInjectedScript",
+      "selfWeight": 0,
+      "totalWeight": 0.001,
+    },
+    Frame {
+      "col": 11,
+      "file": "",
+      "key": "createObjectWithoutPrototype::1:11",
+      "line": 1,
+      "name": "createObjectWithoutPrototype",
+      "selfWeight": 0.001,
+      "totalWeight": 0.001,
+    },
+    Frame {
+      "col": 1,
+      "file": "__InjectedScript_FormMetadata.js",
+      "key": "(program):__InjectedScript_FormMetadata.js:1:1",
+      "line": 1,
+      "name": "(program)",
+      "selfWeight": 0,
+      "totalWeight": 0.001,
+    },
+    Frame {
+      "col": 33612,
+      "file": "__InjectedScript_FormMetadata.js",
+      "key": "FormMetadata:__InjectedScript_FormMetadata.js:3:33612",
+      "line": 3,
+      "name": "FormMetadata",
+      "selfWeight": 0,
+      "totalWeight": 0.001,
+    },
+    Frame {
+      "col": 11,
+      "file": "",
+      "key": "reduce::1:11",
+      "line": 1,
+      "name": "reduce",
+      "selfWeight": 0,
+      "totalWeight": 0.001,
+    },
+    Frame {
+      "col": 34295,
+      "file": "__InjectedScript_FormMetadata.js",
+      "key": ":__InjectedScript_FormMetadata.js:3:34295",
+      "line": 3,
+      "name": "(anonymous __InjectedScript_FormMetadata.js:3)",
+      "selfWeight": 0.001,
+      "totalWeight": 0.001,
+    },
+    Frame {
+      "col": 66678,
+      "file": "__InjectedScript_ReaderArticleFinder.js",
+      "key": "findTextSamplesByVisualExamination:__InjectedScript_ReaderArticleFinder.js:13:66678",
+      "line": 13,
+      "name": "findTextSamplesByVisualExamination",
+      "selfWeight": 0.0002195416745962575,
+      "totalWeight": 0.0002195416745962575,
+    },
+  ],
+  "name": "Timeline Recording 5",
+  "stacks": [
+    "(program);alpha;beta;gamma 5.24ms",
+    "(program);alpha;delta;gamma 3.49ms",
+    "(program);alpha;beta;gamma 1.75ms",
+    "(program);alpha;delta;gamma 1.75ms",
+    " 254.58ms",
+    "createInspectorInjectedScript;createObjectWithoutPrototype 1.00ms",
+    "(program);FormMetadata;reduce;(anonymous __InjectedScript_FormMetadata.js:3) 1.00ms",
+    " 1.58s",
+    "findTextSamplesByVisualExamination 219.54µs",
+  ],
+}
+`;
+
+exports[`importFromSafari 26.4: indexToView 1`] = `0`;
+
+exports[`importFromSafari 26.4: profileGroup.name 1`] = `"Timeline Recording 5"`;
+
 exports[`importFromSafari: indexToView 1`] = `0`;
 
 exports[`importFromSafari: profileGroup.name 1`] = `"Grabación de Control temporal 1"`;

@@ -34,12 +34,17 @@ interface StackFrame {
   expressionLocation?: ExprLocation
 }
 
-interface Sample {
+interface StackFramesSample {
   timestamp: number
   stackFrames: StackFrame[]
 }
 
-interface Recording {
+interface Sample {
+  stackTraces: StackFramesSample[]
+  durations: number[]
+}
+
+type Recording = {
   displayName: string
   startTime: number
   endTime: number
@@ -48,9 +53,15 @@ interface Recording {
   records: Record[]
   markers: any[]
   memoryPressureEvents: any[]
-  sampleStackTraces: Sample[]
-  sampleDurations: number[]
-}
+} & (
+  | {
+      sampleStackTraces: StackFramesSample[]
+      sampleDurations: number[]
+    }
+  | {
+      samples: Sample[]
+    }
+)
 
 interface Overview {
   secondsPerPixel: number
@@ -77,13 +88,33 @@ function makeStack(frames: StackFrame[]): FrameInfo[] {
     .reverse()
 }
 
+function extractSample(recording: Recording) {
+  if ('sampleStackTraces' in recording) {
+    return recording
+  }
+
+  const {samples} = recording
+  const sample = samples.length > 0 ? samples[0] : {stackTraces: [], durations: []}
+  return {
+    sampleStackTraces: sample.stackTraces,
+    sampleDurations: sample.durations,
+  }
+}
+
+export function isSafariTimeline(rawProfile: any): rawProfile is SafariProfile {
+  return (
+    'recording' in rawProfile &&
+    ('sampleStackTraces' in rawProfile.recording || 'samples' in rawProfile.recording)
+  )
+}
+
 export function importFromSafari(contents: SafariProfile): Profile | null {
   if (contents.version !== 1) {
     console.warn(`Unknown Safari profile version ${contents.version}... Might be incompatible.`)
   }
 
   const {recording} = contents
-  const {sampleStackTraces, sampleDurations} = recording
+  const {sampleStackTraces, sampleDurations} = extractSample(recording)
 
   const count = sampleStackTraces.length
   if (count < 1) {

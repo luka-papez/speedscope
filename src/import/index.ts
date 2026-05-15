@@ -15,7 +15,7 @@ import {importSpeedscopeProfiles} from '../lib/file-format'
 import {importFromV8ProfLog} from './v8proflog'
 import {importFromLinuxPerf} from './linux-tools-perf'
 import {importFromHaskell} from './haskell'
-import {importFromSafari} from './safari'
+import {isSafariTimeline, importFromSafari} from './safari'
 import {ProfileDataSource, TextProfileDataSource, MaybeCompressedDataReader} from './utils'
 import {importAsPprofProfile} from './pprof'
 import {decodeBase64} from '../lib/utils'
@@ -175,7 +175,7 @@ async function _importProfileGroup(dataSource: ProfileDataSource): Promise<Profi
     } else if ('rts_arguments' in parsed && 'initial_capabilities' in parsed) {
       console.log('Importing as Haskell GHC JSON Profile')
       return importFromHaskell(parsed)
-    } else if ('recording' in parsed && 'sampleStackTraces' in parsed.recording) {
+    } else if (isSafariTimeline(parsed)) {
       console.log('Importing as Safari profile')
       return toGroup(importFromSafari(parsed))
     }
